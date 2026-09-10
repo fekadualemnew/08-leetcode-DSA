@@ -3,10 +3,8 @@ class Solution:
         hashset = set()
 
         for item in nums:
-            if item not in hashset:
-                hashset.add(item)
-            else:
-                 return True
-                 break
+            if item in hashset:
+                return True
+            hashset.add(item)
         return False
         
