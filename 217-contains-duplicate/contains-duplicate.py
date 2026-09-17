@@ -1,11 +1,9 @@
 class Solution:
     def containsDuplicate(self, nums: List[int]) -> bool:
-        hash_dict = {}
-
-        for item in nums:
-            if item in hash_dict:
+        counts = Counter(nums)
+        for count in counts.values():
+            if count > 1:
                 return True
-            hash_dict[item] = True 
         return False
 
         
