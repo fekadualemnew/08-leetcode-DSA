@@ -5,6 +5,6 @@ class Solution:
 
         for i in range(n):
             for j in range(n):
-                if i != j and nums[i] == nums[j] and (i * j) % k == 0 and i < j:
+                if i < j and nums[i] == nums[j] and (i * j) % k == 0:
                     count += 1
         return count
