@@ -1,18 +1,31 @@
 class Solution:
     def findDiagonalOrder(self, mat: list[list[int]]) -> list[int]:
         M , N = len(mat) , len(mat[0])
-
-        diagonals = defaultdict(list)
-
-        for i in range(M):
-            for j in range(N):
-                diagonals[i + j].append(mat[i][j])
-        
         result = []
+        row, col = 0, 0
+        direction = 1
 
-        for i in range(M + N - 1):
-            if i % 2 == 0:
-                diagonals[i].reverse()
-            result.extend(diagonals[i])
-        return result
+        while len(result) < M * N:
+            result.append(mat[row][col])
             
+            if direction == 1:
+                if col == N - 1:
+                    row += 1
+                    direction = -1
+                elif row == 0:
+                    col += 1
+                    direction = -1
+                else:
+                    row -= 1
+                    col += 1
+            else:
+                if row == M - 1:
+                    col += 1
+                    direction = 1
+                elif col == 0:
+                    row += 1
+                    direction = 1
+                else:
+                    row += 1
+                    col -= 1
+        return result
