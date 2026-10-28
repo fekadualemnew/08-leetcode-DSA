@@ -3,9 +3,15 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        n = len(nums)
-        for i in range(n):
-            for j in range(i + 1, n):
-                if nums[j] < nums[i]:
-                    nums[j], nums[i] = nums[i], nums[j]
+        counts = [0, 0, 0]
+        for num in nums:
+            counts[num] += 1
+
+        idx = 0
+        for color in range(3):
+            for _ in range(counts[color]):
+                nums[idx] = color
+                idx += 1
+
+            
         
